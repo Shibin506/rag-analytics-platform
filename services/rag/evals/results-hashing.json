@@ -22,8 +22,8 @@
       "mrr": 0.838
     }
   },
-  "extractive_answer_contains_phrase": 0.808,
-  "retrieval_ms_p50": 2,
+  "extractive_answer_contains_phrase": 0.846,
+  "retrieval_ms_p50": 1,
   "retrieval_ms_p95": 3,
   "misses_at_3": {
     "vector": [

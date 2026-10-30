@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/api.ts","./src/main.tsx","./src/components/Charts.tsx","./src/lib/citations.ts","./src/lib/format.ts","./src/lib/lib.test.ts","./src/lib/sse.ts","./src/lib/usePoll.ts","./src/pages/Analytics.tsx","./src/pages/Assistant.tsx","./src/pages/Documents.tsx","./src/pages/Overview.tsx","./src/pages/Schemas.tsx","./vite.config.ts"],"version":"5.6.3"}

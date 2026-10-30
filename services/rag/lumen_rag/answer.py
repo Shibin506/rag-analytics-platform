@@ -95,6 +95,8 @@ class ClaudeAnswerer:
             yield " …"
 
 
+HEADING_WEIGHT = 0.6
+
 _SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9*`\"(])")
 
 
@@ -114,7 +116,13 @@ class ExtractiveAnswerer:
             return NOT_FOUND
         scored: list[tuple[float, int, int, str]] = []
         for hi, h in enumerate(hits[:4]):
-            body = h.content.split("\n\n", 1)[-1]  # drop the heading path
+            # Chunks start with their section path (see chunking.chunk_text).
+            heading, sep, body = h.content.partition("\n\n")
+            if not sep:
+                heading, body = "", h.content
+            # A section heading often names exactly what its sentences answer
+            # ("Rotate a key without downtime"), so it lends them some weight.
+            head = len(q & {_stem(t) for t in tokens(heading)}) / len(q)
             for si, raw in enumerate(_SENTENCE.split(body.replace("\n", " "))):
                 s = raw.strip().lstrip("-* ").strip()
                 if len(s.split()) < 4:
@@ -123,7 +131,7 @@ class ExtractiveAnswerer:
                 overlap = len(q & terms) / len(q)
                 if overlap == 0:
                     continue
-                scored.append((overlap / (1 + 0.35 * hi), hi, si, s))
+                scored.append(((overlap + HEADING_WEIGHT * head) / (1 + 0.35 * hi), hi, si, s))
         if not scored:
             return NOT_FOUND
         best = sorted(scored, key=lambda x: -x[0])[: self.max_sentences]
