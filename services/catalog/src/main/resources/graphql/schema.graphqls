@@ -1,0 +1,129 @@
+"""
+Lumen's client-facing API. Every request is authenticated with the tenant's
+API key in the X-API-Key header; `viewer` is that tenant.
+"""
+type Query {
+    viewer: Tenant!
+    "Dry-run a schema change: is it valid and backward compatible?"
+    checkSchema(eventType: String!, schema: String!): SchemaCheck!
+}
+
+type Mutation {
+    "Register a new version of an event type's schema. Rejected if it breaks compatibility."
+    registerSchema(eventType: String!, schema: String!): SchemaCheck!
+}
+
+type Tenant {
+    id: ID!
+    name: String!
+    eventTypes: [EventType!]!
+    "Per-minute ingest counts for the last `minutes` minutes (real time, from the gateways)."
+    ingestSeries(minutes: Int = 60): [IngestPoint!]!
+    ingestTotals(hours: Int = 24): IngestTotals!
+    documents: [Document!]!
+    answers(limit: Int = 20): [AnswerLog!]!
+    feedback: FeedbackSummary!
+    "Lake analytics served by Trino over the curated Parquet tables."
+    analytics: Analytics!
+}
+
+type EventType {
+    name: String!
+    latestVersion: Int!
+    versions: [SchemaVersion!]!
+}
+
+type SchemaVersion {
+    version: Int!
+    "The JSON Schema, as a JSON string."
+    schema: String!
+    createdAt: String!
+}
+
+type SchemaCheck {
+    ok: Boolean!
+    "The version that was (or would be) assigned."
+    version: Int
+    errors: [String!]!
+    breakingChanges: [String!]!
+}
+
+type IngestPoint {
+    minute: String!
+    accepted: Int!
+    rejected: Int!
+}
+
+type IngestTotals {
+    accepted: Float!
+    rejected: Float!
+    rejectionRate: Float!
+    byEventType: [EventTypeTotal!]!
+}
+
+type EventTypeTotal {
+    eventType: String!
+    accepted: Float!
+    rejected: Float!
+}
+
+type Document {
+    id: ID!
+    title: String!
+    status: String!
+    chunkCount: Int!
+    error: String
+    createdAt: String!
+    indexedAt: String
+}
+
+type AnswerLog {
+    id: ID!
+    question: String!
+    answer: String!
+    mode: String!
+    retrievalMs: Int!
+    totalMs: Int!
+    createdAt: String!
+    upVotes: Int!
+    downVotes: Int!
+}
+
+type FeedbackSummary {
+    answers: Int!
+    up: Int!
+    down: Int!
+    "Share of voted answers that got a thumbs-up."
+    satisfaction: Float
+}
+
+type Analytics {
+    "False when Trino is unreachable; the other fields are then empty."
+    available: Boolean!
+    "The last day the nightly pipeline has published."
+    latestDay: String
+    daily(days: Int = 14): [DailyEvents!]!
+    revenue(days: Int = 14): [DailyRevenue!]!
+    topPages(days: Int = 7, limit: Int = 5): [PageCount!]!
+    queryMs: Int!
+}
+
+type DailyEvents {
+    day: String!
+    eventType: String!
+    events: Float!
+    users: Float!
+}
+
+type DailyRevenue {
+    day: String!
+    currency: String!
+    orders: Float!
+    revenueCents: Float!
+}
+
+type PageCount {
+    path: String!
+    views: Float!
+    users: Float!
+}
