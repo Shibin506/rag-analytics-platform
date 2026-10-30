@@ -1,0 +1,44 @@
+{
+  "embedder": "hashing",
+  "chunk_words": 120,
+  "questions": 26,
+  "retrieval": {
+    "vector": {
+      "hit@1": 0.731,
+      "hit@3": 0.885,
+      "hit@5": 0.923,
+      "mrr": 0.815
+    },
+    "keyword": {
+      "hit@1": 0.731,
+      "hit@3": 0.923,
+      "hit@5": 0.923,
+      "mrr": 0.808
+    },
+    "hybrid": {
+      "hit@1": 0.769,
+      "hit@3": 0.885,
+      "hit@5": 0.885,
+      "mrr": 0.838
+    }
+  },
+  "extractive_answer_contains_phrase": 0.808,
+  "retrieval_ms_p50": 2,
+  "retrieval_ms_p95": 3,
+  "misses_at_3": {
+    "vector": [
+      "What is the maximum number of events in one request?",
+      "How long are raw events retained?",
+      "My events are rejected because occurred_at is in the future"
+    ],
+    "keyword": [
+      "How long are raw events retained?",
+      "My events are rejected because occurred_at is in the future"
+    ],
+    "hybrid": [
+      "What is the maximum number of events in one request?",
+      "How long are raw events retained?",
+      "My events are rejected because occurred_at is in the future"
+    ]
+  }
+}

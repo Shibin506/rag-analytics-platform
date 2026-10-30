@@ -1,0 +1,26 @@
+{"q": "How do I rotate an API key without downtime?", "doc": "01-getting-started", "phrase": "Both keys work during the overlap"}
+{"q": "Can I recover a lost API key?", "doc": "01-getting-started", "phrase": "cannot be recovered"}
+{"q": "Which header carries the API key for REST calls?", "doc": "01-getting-started", "phrase": "X-API-Key"}
+{"q": "What is the maximum number of events in one request?", "doc": "02-event-ingestion", "phrase": "at most 5,000 events"}
+{"q": "Does one bad event fail the whole batch?", "doc": "02-event-ingestion", "phrase": "never blocks the rest of the batch"}
+{"q": "Is it safe to retry a request after a 503?", "doc": "02-event-ingestion", "phrase": "Retrying is safe"}
+{"q": "How far back can I backfill historical events?", "doc": "02-event-ingestion", "phrase": "400 days in the past"}
+{"q": "Which day is an event filed under?", "doc": "02-event-ingestion", "phrase": "UTC day on which they occurred"}
+{"q": "How quickly is a new schema version enforced?", "doc": "03-schema-registry", "phrase": "within 15 seconds"}
+{"q": "Can a new schema version remove a property?", "doc": "03-schema-registry", "phrase": "may not remove a property"}
+{"q": "How should I make a breaking schema change?", "doc": "03-schema-registry", "phrase": "order.placed.v2"}
+{"q": "How much does the Growth plan cost per month?", "doc": "04-billing-and-plans", "phrase": "$499 per month"}
+{"q": "What happens if we go over our monthly event allowance?", "doc": "04-billing-and-plans", "phrase": "$8 per additional million"}
+{"q": "Do you refund monthly plans when I cancel?", "doc": "04-billing-and-plans", "phrase": "Monthly plans are not refunded"}
+{"q": "When are invoices due?", "doc": "04-billing-and-plans", "phrase": "due within 30 days"}
+{"q": "How long are raw events retained?", "doc": "05-data-retention-privacy", "phrase": "400 days"}
+{"q": "How do I delete a user's data for a GDPR request?", "doc": "05-data-retention-privacy", "phrase": "submit the `user_id` on the Privacy page"}
+{"q": "Can we keep our data in the EU?", "doc": "05-data-retention-privacy", "phrase": "EU (Frankfurt)"}
+{"q": "Why don't today's events show on the revenue dashboard?", "doc": "06-dashboards-performance", "phrase": "02:00 UTC"}
+{"q": "How do I make my Trino queries faster?", "doc": "06-dashboards-performance", "phrase": "filter on `dt`"}
+{"q": "Why am I getting 429 Too Many Requests?", "doc": "07-troubleshooting", "phrase": "1,000 requests per second"}
+{"q": "My events are rejected because occurred_at is in the future", "doc": "07-troubleshooting", "phrase": "more than 5 minutes ahead"}
+{"q": "Which identity providers work with SAML SSO?", "doc": "08-sso-and-access", "phrase": "Okta, Azure AD"}
+{"q": "What can an Analyst role do?", "doc": "08-sso-and-access", "phrase": "views dashboards and asks the assistant"}
+{"q": "How long until SCIM deprovisions a removed user?", "doc": "08-sso-and-access", "phrase": "within 40 minutes"}
+{"q": "Are amounts sent as strings accepted?", "doc": "07-troubleshooting", "phrase": "instead of an integer number of cents"}

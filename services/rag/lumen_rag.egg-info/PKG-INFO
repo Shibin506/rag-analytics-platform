@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: lumen-rag
+Version: 0.1.0
+Summary: Lumen retrieval-augmented answering service
+Requires-Python: >=3.11
+Requires-Dist: fastapi==0.115.12
+Requires-Dist: uvicorn[standard]==0.34.2
+Requires-Dist: psycopg[binary]==3.2.9
+Requires-Dist: psycopg-pool==3.2.6
+Requires-Dist: pgvector==0.4.1
+Requires-Dist: numpy<3,>=2.0
+Requires-Dist: boto3==1.38.23
+Requires-Dist: anthropic>=0.80
+Requires-Dist: prometheus-client==0.22.0
+Requires-Dist: pydantic==2.11.5
+Provides-Extra: fastembed
+Requires-Dist: fastembed==0.7.0; extra == "fastembed"
+Provides-Extra: dev
+Requires-Dist: pytest==8.3.5; extra == "dev"
+Requires-Dist: httpx==0.28.1; extra == "dev"
