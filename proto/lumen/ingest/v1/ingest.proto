@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package lumen.ingest.v1;
+
+option go_package = "github.com/Shibin506/rag-analytics-platform/services/ingest/gen/ingestv1;ingestv1";
+
+// IngestService is how client applications send data into Lumen.
+// Every call is authenticated with the tenant's API key in the
+// `x-api-key` metadata header.
+service IngestService {
+  // Sends a batch of events. Valid events are accepted; invalid ones are
+  // reported per event and never block the rest of the batch.
+  rpc SendEvents(SendEventsRequest) returns (SendEventsResponse);
+
+  // Streams events for high-volume clients; the server answers once the
+  // client closes the stream.
+  rpc StreamEvents(stream Event) returns (SendEventsResponse);
+
+  // Uploads a text document to be indexed for retrieval (RAG).
+  rpc PutDocument(PutDocumentRequest) returns (PutDocumentResponse);
+}
+
+message Event {
+  // Client-generated UUID; used to de-duplicate retries downstream.
+  string event_id = 1;
+  // Registered event type, e.g. "order.placed".
+  string event_type = 2;
+  // RFC 3339 timestamp of when the event happened on the client.
+  string occurred_at = 3;
+  string user_id = 4;
+  // Event payload as a JSON object; validated against the event type's schema.
+  string properties_json = 5;
+}
+
+message SendEventsRequest {
+  repeated Event events = 1;
+}
+
+message Rejection {
+  // Position of the event in the request (or stream).
+  int32 index = 1;
+  string event_id = 2;
+  string reason = 3;
+}
+
+message SendEventsResponse {
+  int32 accepted = 1;
+  repeated Rejection rejected = 2;
+}
+
+message PutDocumentRequest {
+  string title = 1;
+  string text = 2;
+}
+
+message PutDocumentResponse {
+  string document_id = 1;
+  string status = 2;
+}

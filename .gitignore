@@ -1,0 +1,11 @@
+# build output
+/services/ingest/bin/
+services/catalog/target/
+web/node_modules/
+web/dist/
+**/__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.env
+bench/results/*.raw.json
