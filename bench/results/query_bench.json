@@ -1,0 +1,98 @@
+{
+  "runs": 7,
+  "total_raw_ms": 4007.8,
+  "total_curated_ms": 1192.8,
+  "total_latency_reduction": 0.702,
+  "queries": [
+    {
+      "query": "Daily events by type (7 days)",
+      "raw": {
+        "median_ms": 449.8,
+        "min_ms": 396.4,
+        "bytes": 78614059,
+        "rows": 21
+      },
+      "curated": {
+        "median_ms": 141.4,
+        "min_ms": 126.8,
+        "bytes": 6034,
+        "rows": 21
+      },
+      "speedup": 3.18,
+      "latency_reduction": 0.686,
+      "bytes_reduction": 1.0
+    },
+    {
+      "query": "Revenue by currency (14 days)",
+      "raw": {
+        "median_ms": 695.3,
+        "min_ms": 625.2,
+        "bytes": 157266967,
+        "rows": 42
+      },
+      "curated": {
+        "median_ms": 159.6,
+        "min_ms": 135.0,
+        "bytes": 11668,
+        "rows": 42
+      },
+      "speedup": 4.36,
+      "latency_reduction": 0.77,
+      "bytes_reduction": 1.0
+    },
+    {
+      "query": "Top pages (7 days)",
+      "raw": {
+        "median_ms": 475.6,
+        "min_ms": 450.8,
+        "bytes": 78614059,
+        "rows": 5
+      },
+      "curated": {
+        "median_ms": 194.1,
+        "min_ms": 184.1,
+        "bytes": 18021315,
+        "rows": 5
+      },
+      "speedup": 2.45,
+      "latency_reduction": 0.592,
+      "bytes_reduction": 0.771
+    },
+    {
+      "query": "Urgent tickets by topic (30 days)",
+      "raw": {
+        "median_ms": 1171.6,
+        "min_ms": 1104.3,
+        "bytes": 325756708,
+        "rows": 6
+      },
+      "curated": {
+        "median_ms": 337.4,
+        "min_ms": 326.7,
+        "bytes": 74662705,
+        "rows": 6
+      },
+      "speedup": 3.47,
+      "latency_reduction": 0.712,
+      "bytes_reduction": 0.771
+    },
+    {
+      "query": "Daily active users (30 days)",
+      "raw": {
+        "median_ms": 1215.5,
+        "min_ms": 987.0,
+        "bytes": 325756708,
+        "rows": 29
+      },
+      "curated": {
+        "median_ms": 360.3,
+        "min_ms": 339.7,
+        "bytes": 74662705,
+        "rows": 29
+      },
+      "speedup": 3.37,
+      "latency_reduction": 0.704,
+      "bytes_reduction": 0.771
+    }
+  ]
+}
