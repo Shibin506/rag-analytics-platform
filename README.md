@@ -6,6 +6,9 @@
 Go · Java (Spring Boot, GraphQL) · Python (FastAPI, PySpark, Airflow) · TypeScript + React · gRPC · PostgreSQL + pgvector · S3 · Apache Spark · Trino · Apache Airflow · Docker
 </p>
 
+<p align="center"><a href="docs/demo.mp4"><img src="docs/images/demo-poster.jpg" alt="Play a 25-second tour of the dashboard" width="900"></a></p>
+<p align="center"><sub>▶ <a href="docs/demo.mp4">25-second tour</a> of the running dashboard (screenshots): overview, analytics, the assistant and schemas.</sub></p>
+
 ![Analytics dashboard](docs/images/analytics-light.png)
 
 ## What it does
